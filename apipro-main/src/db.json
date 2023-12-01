@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "dea afrizal"
+    },
+    {
+      "id": 2,
+      "name": "pamela test"
+    }
+  ],
+  "users_post": [
+    {
+      "post_id": 101,
+      "user_id": 1,
+      "post_like": 1000
+    },
+    {
+      "post_id": 102,
+      "user_id": 2,
+      "post_like": 320
+    }
+  ]
+}
