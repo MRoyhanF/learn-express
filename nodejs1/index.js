@@ -3,37 +3,39 @@ const app = express()
 const port = 3000
 const bodyParser = require('body-parser')
 const db = require('./connection')
-const response =require('./response')
-
-// routes utama
+const response = require ("./response")
 
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
-    const sql = "SELECT * FROM mahasiswa"
-    db.query(sql, (error, result) => {
-        // hasil data dari mysql
-        response(200, result, "get all data from mahasiswa", res)
-    })
+
+app.get("/", (req, res) => {
+    response(200, "lalala", res)
 })
 
-app.get('/find', (req, res) => {
-    const sql = `SELECT nama_lengkap FROM mahasiswa WHERE nim =${req.query.nim}`
-    db.query(sql, (error, result) => {
-        // hasil pencarian nama lengkap
-        response(200, result, "find mahasiswa name", res)
-    })
+app.get("/mahasiswa", (req, res) => {
+    response(200, "ini data", "ini message", res)
+    // const sql = "SELECT * FROM mahasiswa"
+    // db.query(sql, (error, result) =>{
+    // })
 })
 
-app.post('/login', (req, res) => {
-    console.log({requestFromOutSide: req.body})
-    res.send('login berhasil')
+app.get('/mahasiswa/:nim', (req, res) => {
+    const nim = req.params.nim
+    response(200, `spesifik mahasiswa by id ${nim}`, res)
 })
 
-app.put('/username', (req, res) => {
-    console.log({updateData: req.body})
-    res.send('update berhasil')
+app.post('/mahasiswa', (req, res) => {
+    response(200, "INI POSTING", res)
 })
+
+app.put('/mahasiswa', (req, res) => {
+    response(200, "INI PUT UPDATE DATA", res)
+})
+
+app.delete('/mahasiswa', (req, res) => {
+    response(200, "INI DELETE DATA", res)
+})
+
 
 
 
